@@ -22,5 +22,6 @@ public interface PassengerService {
 
     void deletePassenger(Long id);
 
-    ApiResponse bookRide(BookRideRequest bookRideRequest);
+    Passenger getCurrentPassenger();
+
 }

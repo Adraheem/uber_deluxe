@@ -27,13 +27,14 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 public class UberDeluxeAuthorizationFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         String authHeader = request.getHeader(AUTHORIZATION);
         if (request.getServletPath().equals("/api/v1/login")||
-        request.getServletPath().equals("/api/v1/driver/register")){
+        request.getServletPath().equals("/api/v1/driver/register") ||
+        request.getServletPath().equals("/swagger-ui/index.html#/")
+        ){
             filterChain.doFilter(request, response);
         }else{
             if (authHeader!=null&&authHeader.startsWith("Bearer ")){

@@ -1,12 +1,10 @@
 package africa.semicolon.uberdeluxe.util;
 
-import africa.semicolon.uberdeluxe.data.dto.request.Location;
+import africa.semicolon.uberdeluxe.data.dto.request.LocationDto;
 import africa.semicolon.uberdeluxe.exception.BusinessLogicException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.TextCodec;
-import lombok.Getter;
-import org.apache.commons.lang.text.StrBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -67,8 +65,8 @@ public class AppUtilities {
     }
 
 
-    public static String buildLocation(Location location){
-        return location.getHouseNumber() + "," + location.getStreet() + "," + location.getCity()+location.getState();
+    public static String buildLocation(LocationDto locationDto){
+        return locationDto.getHouseNumber() + "," + locationDto.getStreet() + "," + locationDto.getCity()+ locationDto.getState();
     }
 
 

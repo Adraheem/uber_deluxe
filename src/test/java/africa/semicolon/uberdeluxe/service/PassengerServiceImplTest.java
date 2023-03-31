@@ -1,7 +1,7 @@
 package africa.semicolon.uberdeluxe.service;
 
 import africa.semicolon.uberdeluxe.data.dto.request.BookRideRequest;
-import africa.semicolon.uberdeluxe.data.dto.request.Location;
+import africa.semicolon.uberdeluxe.data.dto.request.LocationDto;
 import africa.semicolon.uberdeluxe.data.dto.request.RegisterPassengerRequest;
 import africa.semicolon.uberdeluxe.data.dto.response.ApiResponse;
 import africa.semicolon.uberdeluxe.data.dto.response.RegisterResponse;
@@ -37,7 +37,7 @@ class PassengerServiceImplTest {
     @BeforeEach
     void setUp() throws IOException {
         request = new RegisterPassengerRequest();
-        request.setEmail("test@email.com");
+        request.setEmail("test4@email.com");
         request.setPassword("testPassword");
         request.setName("Amirah Tinubu");
     }
@@ -79,20 +79,20 @@ class PassengerServiceImplTest {
 
     }
 
-    @Test
-    public void bookRide(){
-        RegisterResponse response = passengerService.register(request);
-        BookRideRequest bookRideRequest = buildBookRideRequest(response.getId());
-        ApiResponse bookRideResponse = passengerService.bookRide(bookRideRequest);
-        log.info("response->{}", bookRideResponse);
-        assertThat(bookRideResponse).isNotNull();
-    }
+//    @Test
+//    public void bookRide(){
+//        RegisterResponse response = passengerService.register(request);
+//        BookRideRequest bookRideRequest = buildBookRideRequest(response.getId());
+//        ApiResponse bookRideResponse = passengerService.bookRide(bookRideRequest);
+//        log.info("response->{}", bookRideResponse);
+//        assertThat(bookRideResponse).isNotNull();
+//    }
 
     private BookRideRequest buildBookRideRequest(Long passengerId){
         BookRideRequest bookRideRequest = new BookRideRequest();
         bookRideRequest.setPassengerId(passengerId);
-        bookRideRequest.setOrigin(new Location("312", "Herbert Macaulay Way", "Yaba", "Lagos"));
-        bookRideRequest.setDestination(new Location("371", "Herbert Macaulay Way", "Yaba", "Lagos"));
+        bookRideRequest.setOrigin(new LocationDto("312", "Herbert Macaulay Way", "Yaba", "Lagos"));
+        bookRideRequest.setDestination(new LocationDto("371", "Herbert Macaulay Way", "Yaba", "Lagos"));
         return bookRideRequest;
     }
 
